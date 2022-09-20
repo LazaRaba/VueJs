@@ -29,7 +29,17 @@ export default {
         // return value==='1'|| value ==='0'}
         },
       id:{type:String, required:false}
-
+    },
+    emits:{
+      'mon-event-premium': function(id){
+        if(id){
+          return true;
+        }
+        else{
+          console.warn('Yo Kefen');
+          return false;
+        }
+      }
     },
     data(){
         return{
@@ -48,7 +58,7 @@ export default {
             this.detailsVisibles = !this.detailsVisibles;
         },
         afficherPremium(){
-            // this.premiumData = !this.premiumData;
+            // this.premiumData = !this.premiumData;(pour faire fonctionner le booléen)
             this.$emit('mon-event-premium',this.id);
         },
     },

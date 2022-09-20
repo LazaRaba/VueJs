@@ -49,7 +49,7 @@ export default{
         afficherStatusPremium(leIdDansUnAmi){
         let unAmiIdentified = this.lesAmis.find(unTruc=>unTruc.id===leIdDansUnAmi);
         unAmiIdentified.premium=!unAmiIdentified.premium;
-        console.log(unAmiIdentified);
+        console.log('amiIdenditified :', unAmiIdentified);
         }
     },
 }
