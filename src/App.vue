@@ -2,10 +2,19 @@
   <!-- <div class="container"> -->
     <h1 class="text-center">Les Amis</h1>
     <ul class="list-group">
-      <un-ami v-for="unAmi in lesAmis" v-bind:key="unAmi.id" :leNom="unAmi.name" :lePhone="unAmi.lePhone" :leMail="unAmi.leMail"></un-ami>
+      <un-ami v-for="unAmi in lesAmis" 
+      :key="unAmi.id" 
+      :leNom="unAmi.name" 
+      :lePhone="unAmi.lePhone" 
+      :leMail="unAmi.leMail" 
+      :premium="unAmi.premium"
+      @mon-event-premium="afficherStatusPremium"
+      :id="unAmi.id">
+      </un-ami>
     </ul>
   <!-- </div> -->
 </template>
+
 
 <script>
 export default{
@@ -17,24 +26,35 @@ export default{
             name: 'COCO L ASTICOT',
             lePhone: '01234 5678 991',
             leMail: 'coco@lasticot.com',
+            premium:true
         },
         {
             id: 'robert pires',
             name: 'Pires Junior',
             lePhone: '01234 5678 991',
             leMail: 'coco@lasticot.com',
+            premium:true
         },
         {
             id: 'janine',
             name: 'Janine DeLavega',
             lePhone: '09876 543 221',
             leMail: 'janine@delavega.com',
+            premium:false
         },
     ],
     }
   },
+  methods:{
+        afficherStatusPremium(leIdDansUnAmi){
+        let unAmiIdentified = this.lesAmis.find(unTruc=>unTruc.id===leIdDansUnAmi);
+        unAmiIdentified.premium=!unAmiIdentified.premium;
+        console.log(unAmiIdentified);
+        }
+    },
 }
 </script>
+
 
 <style>
 #app {
