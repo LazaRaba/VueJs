@@ -2,6 +2,8 @@
   <!-- <div class="container"> -->
     <h1 class="text-center">Les Amis</h1>
     <ul class="list-group">
+      <new-ami @add-ami="ajouterAmi">
+      </new-ami>
       <un-ami v-for="unAmi in lesAmis" 
       :key="unAmi.id" 
       :leNom="unAmi.name" 
@@ -11,6 +13,7 @@
       @mon-event-premium="afficherStatusPremium"
       :id="unAmi.id">
       </un-ami>
+      
     </ul>
   <!-- </div> -->
 </template>
@@ -41,8 +44,9 @@ export default{
             lePhone: '09876 543 221',
             leMail: 'janine@delavega.com',
             premium:false
-        },
+        },        
     ],
+    
     }
   },
   methods:{
@@ -50,7 +54,19 @@ export default{
         let unAmiIdentified = this.lesAmis.find(unTruc=>unTruc.id===leIdDansUnAmi);
         unAmiIdentified.premium=!unAmiIdentified.premium;
         console.log('amiIdenditified :', unAmiIdentified);
-        }
+        },
+        ajouterAmi(name,phone,email){
+          let newAmiContact = {
+            id:new Date().toISOString,
+            // id:new Date().toISOString, evite les doublons
+            name:name,
+            phone:phone,
+            email:email,
+            premium:false
+          }
+          this.lesAmis.push(newAmiContact);
+        },
+        
     },
 }
 </script>

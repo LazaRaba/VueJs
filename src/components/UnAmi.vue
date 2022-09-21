@@ -2,7 +2,7 @@
     <div class="container my-1">
         <ul class="list-group">
             <h2 class="list-group-item btn btn-warning " >{{leNom}} {{premium ? 'Ami premium' :'Ami Nul'}}</h2> 
-            <button  @click=afficherPremium class="btn btn-success">Premium ?</button>
+            <button  @click="afficherPremium" class="btn btn-success">Premium ?</button>
             <button @click="afficherDetails"  class="btn btn-primary">{{detailsVisibles? 'Masquer': 'Afficher'}}</button>
             <ul v-if="detailsVisibles" class="list-group">
                 <li class="list-group-item">{{lePhone}}</li>
@@ -36,7 +36,7 @@ export default {
           return true;
         }
         else{
-          console.warn('Yo Kefen');
+          console.warn('Y a Pas De ID');
           return false;
         }
       }
